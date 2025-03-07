@@ -302,7 +302,7 @@ liftCRandT f = CRandT $ Lazy.StateT $ (\g -> ExceptT $ return $ f g)
 
 -- |CRandT is the transformer suggested for MonadCRandom.
 newtype CRandT g e m a = CRandT { unCRandT :: Lazy.StateT g (ExceptT e m) a } 
-  deriving (Functor, Applicative, Monad, MonadIO, MonadError e, MonadFix)
+  deriving (Functor, Applicative, Monad, MonadIO, MonadError e, MonadFail)
 
 
 instance MonadTrans (CRandT g e) where
